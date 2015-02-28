@@ -6,9 +6,16 @@
 		"background":{
 			"scripts":[
 				"signup.js",
-				"background.js"
+				"background.js",
+				"authenticate.js"
+
 			]
 		}
+	},
+	"content_scripts": [
+	{
+		"js" : ["http://connect.soundcloud.com/sdk.js"]
 	}
+	]
 
 }
