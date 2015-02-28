@@ -7,11 +7,15 @@
 <script>
   SC.initialize({
     client_id: "ada2ef9470a5b24e4858550357ca9a5b",
-    redirect_uri: "http://jiajames.github.io/HackIllinois/callback.html"
+    redirect_uri: "file:///Users/sakshamsaini/GitHub/HackIllinois/SoundStorage/website/callback.html"
   });
 SC.connect(function(){
-  SC.get('/me', function(me) {
-    alert('Hello, ' + me.username);
+  SC.put("/me/followings/3207", function(user, error){
+    if(error){
+      alert("Error: " + error.message);
+    }else{
+      alert("You are now following " + user.username);
+    }
   });
 });
 </script>
@@ -19,20 +23,5 @@ SC.connect(function(){
   </head>
   <body>
 Hello!
-<script>
-var fileSelector = document.createElement('input');
- fileSelector.setAttribute('type', 'file');
-
- var selectDialogueLink = document.createElement('a');
- selectDialogueLink.setAttribute('href', '');
- selectDialogueLink.innerText = "Select File";
-
- selectDialogueLink.onclick = function () {
-      fileSelector.click();
-      return false;
- }
-
- document.body.appendChild(selectDialogueLink);
- </script>
 </body>
 </html>
