@@ -5,21 +5,43 @@
 <script src="http://connect.soundcloud.com/sdk.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
+  var file=null;
   function authenticate(){
   SC.initialize({
     client_id: "ada2ef9470a5b24e4858550357ca9a5b",
     redirect_uri: "http://jiajames.github.io/HackIllinois/callback.html"
   });
-SC.connect(function(){
-  SC.get('/me', function(me) {
-    alert('Hello, ' + me.username);
+  SC.connect(function(){
+    SC.get('/me', function(me) {
+      alert('Hello, ' + me.username);
+    });
   });
-});
-}
-</script>
-
+  }
+  function handleFileSelect(evt) {
+    file = evt.target.files[0]; // FileList object
+    // files is a FileList of File objects. List some properties.
+  }
+  function upload(){
+    var reader = new FileReader();
+    reader.onloadend = function(evt) {
+      if (evt.target.readyState == FileReader.DONE) {
+        alert(evt.target.result);
+      }
+    }
+    var blob = file.slice(0, 480000000);
+    alert(blob.size);
+    reader.readAsBinaryString(file);
+  }
+  </script>
   </head>
   <body>
+    <script>
+      if (window.File && window.FileReader && window.FileList && window.Blob) {
+      } else {
+      alert('The File APIs are not fully supported in this browser.');
+      }
+    </script>
+  <!--
   <script>
   var fileSelector = document.createElement('input');
   fileSelector.setAttribute('type', 'file');
@@ -30,6 +52,15 @@ SC.connect(function(){
     fileSelector.click(); return false; }
   document.body.appendChild(selectDialogueLink);
   </script>
+-->
+
 <input type="image" src="http://jiajames.github.io/HackIllinois/register.png" onClick="authenticate()"/>
+<input type="file" id="files" name="files[]"  />
+<button onClick="upload()">Upload</button>
+<output id="list"></output>
+
+<script>
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
 </body>
 </html>
