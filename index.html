@@ -17,7 +17,16 @@ SC.connect(function(){
 });
 }
 </script>
-
+<script>
+var fileSelector = document.createElement('input');
+fileSelector.setAttribute('type', 'file');
+var selectDialogueLink = document.createElement('a');
+selectDialogueLink.setAttribute('href', '');
+selectDialogueLink.innerText = "Select File";
+selectDialogueLink.onclick = function () {
+  fileSelector.click(); return false; }
+document.body.appendChild(selectDialogueLink);
+</script>
   </head>
   <body>
 <input type="image" src="http://jiajames.github.io/HackIllinois/register.png" onClick="authenticate()"/>
