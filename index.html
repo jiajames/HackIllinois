@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+<script src="http://connect.soundcloud.com/sdk.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+  SC.initialize({
+    client_id: "ada2ef9470a5b24e4858550357ca9a5b",
+    redirect_uri: "file:///Users/sakshamsaini/GitHub/HackIllinois/SoundStorage/website/callback.html"
+  });
+SC.connect(function(){
+  SC.put("/me/followings/3207", function(user, error){
+    if(error){
+      alert("Error: " + error.message);
+    }else{
+      alert("You are now following " + user.username);
+    }
+  });
+});
+</script>
+
+  </head>
+  <body>
+Hello!
+</body>
+</html>
