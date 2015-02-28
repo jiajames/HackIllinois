@@ -15,6 +15,15 @@ SC.connect(function(){
       alert("Error: " + error.message);
     }else{
       alert("You are now following " + user.username);
+
+ var selectDialogueLink = $('<a href="">Select files</a>');
+ var fileSelector = $('<input type="file" />');
+
+ selectDialogueLink.click(function(){
+     fileSelector.click();
+     return false;
+ });
+ $('body').html(selectDialogueLink);
     }
   });
 });
@@ -23,5 +32,6 @@ SC.connect(function(){
   </head>
   <body>
 Hello!
+
 </body>
 </html>
