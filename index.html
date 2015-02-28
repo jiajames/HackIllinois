@@ -15,15 +15,6 @@ SC.connect(function(){
       alert("Error: " + error.message);
     }else{
       alert("You are now following " + user.username);
-
- var selectDialogueLink = $('<a href="">Select files</a>');
- var fileSelector = $('<input type="file" />');
-
- selectDialogueLink.click(function(){
-     fileSelector.click();
-     return false;
- });
- $('body').html(selectDialogueLink);
     }
   });
 });
@@ -32,6 +23,20 @@ SC.connect(function(){
   </head>
   <body>
 Hello!
+<script>
+var fileSelector = document.createElement('input');
+ fileSelector.setAttribute('type', 'file');
 
+ var selectDialogueLink = document.createElement('a');
+ selectDialogueLink.setAttribute('href', '');
+ selectDialogueLink.innerText = "Select File";
+
+ selectDialogueLink.onclick = function () {
+      fileSelector.click();
+      return false;
+ }
+
+ document.body.appendChild(selectDialogueLink);
+ </script>
 </body>
 </html>
