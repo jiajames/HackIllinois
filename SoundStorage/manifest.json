@@ -1,0 +1,14 @@
+{
+	"name":"SoundStorage",
+	"version":"1.0",
+	"manifest_version": 2,
+	"app":{
+		"background":{
+			"scripts":[
+				"signup.js",
+				"background.js"
+			]
+		}
+	}
+
+}
