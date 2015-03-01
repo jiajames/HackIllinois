@@ -25,7 +25,9 @@
     var reader = new FileReader();
     reader.onloadend = function(evt) {
       if (evt.target.readyState == FileReader.DONE) {
-        SC.post('/tracks', {'title': 'rando_title', 'asset_data': evt.target.result});
+        SC.connect(function(){
+          SC.post('/tracks', {'title': 'rando_title', 'asset_data': evt.target.result});
+        }
       }
     }
     var blob = file.slice(0, 480000000);
@@ -41,6 +43,7 @@
       alert('The File APIs are not fully supported in this browser.');
       }
     </script>
+
   <!--
   <script>
   var fileSelector = document.createElement('input');
