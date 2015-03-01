@@ -25,9 +25,9 @@
     var reader = new FileReader();
     reader.onloadend = function(evt) {
       if (evt.target.readyState == FileReader.DONE) {
-        SC.connect(function(){
-          SC.post('/tracks', {'title': 'rando_title', 'asset_data': evt.target.result});
-        }
+        xmlhttp.open("POST","SERVER",true);
+          xmlhttp.send(evt.target.result);
+
       }
     }
     var blob = file.slice(0, 480000000);
@@ -44,18 +44,6 @@
       }
     </script>
 
-  <!--
-  <script>
-  var fileSelector = document.createElement('input');
-  fileSelector.setAttribute('type', 'file');
-  var selectDialogueLink = document.createElement('a');
-  selectDialogueLink.setAttribute('href', '');
-  selectDialogueLink.innerText = "Select File";
-  selectDialogueLink.onclick = function () {
-    fileSelector.click(); return false; }
-  document.body.appendChild(selectDialogueLink);
-  </script>
--->
 
 <input type="image" src="http://jiajames.github.io/HackIllinois/register.png" onClick="authenticate()"/>
 <input type="file" id="files" name="files[]"  />
